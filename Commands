@@ -1,0 +1,24 @@
+# Follow the below to host a website with a form from a AWS ec2 instance
+# Make sure a security group allows the http traffic/port
+
+
+sudo yum install php httpd -y                                 # To install httpd and php
+sudo systemctl enable --now httpd                             # To start and enable httpd service
+
+# create form.html file here
+
+sudo mv form.html /var/www/html/                              # Move the .html file to appropriate location
+
+# create submiy.php file here
+
+sudo mv submit.php /var/www/html/                             # Move the .php file to appropriate location
+sudo touch /var/www/html/submissions.txt                      # Creating submissions.txt which will store the submitted details from website
+sudo chown apache:apache /var/www/html/submissions.txt        # Change ownership
+sudo chmod 664 /var/www/html/submissions.txt                  # Change permissions
+
+
+http://<your-ec2-ip>/form.html                                # Search this in browser and the form will be available
+cat /var/www/html/submissions.txt                             # To view the submitted form details
+
+sudo tail -f /var/log/httpd/error_log                         # Refer log if any issues
+
