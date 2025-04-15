@@ -16,6 +16,8 @@ sudo touch /var/www/html/submissions.txt                      # Creating submiss
 sudo chown apache:apache /var/www/html/submissions.txt        # Change ownership
 sudo chmod 664 /var/www/html/submissions.txt                  # Change permissions
 
+# use submissions.csv instead of submissions.txt while exporting as .csv
+
 
 http://<your-ec2-ip>/form.html                                # Search this in browser and the form will be available
 cat /var/www/html/submissions.txt                             # To view the submitted form details
