@@ -1,6 +1,8 @@
 # Follow the below to host a website with a form from a AWS ec2 instance
 # Make sure a security group allows the http traffic/port
 
+# 1. To save a data in .txt/.csv file
+
 
 sudo yum install php httpd -y                                 # To install httpd and php
 sudo systemctl enable --now httpd                             # To start and enable httpd service
@@ -23,4 +25,8 @@ http://<your-ec2-ip>/form.html                                # Search this in b
 cat /var/www/html/submissions.txt                             # To view the submitted form details
 
 sudo tail -f /var/log/httpd/error_log                         # Refer log if any issues
+
+####################################################################################################################
+
+# 2. To save a data in maria DB
 
