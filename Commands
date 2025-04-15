@@ -32,7 +32,7 @@ sudo tail -f /var/log/httpd/error_log                         # Refer log if any
 
 sudo yum install php httpd -y                                 # To install httpd and php
 sudo systemctl enable --now httpd                             # To start and enable httpd service
-sudo dnf install mariadb105-server -y                         # To install maria DB
+sudo dnf install mariadb105-server -y                         # To install maria DB in Amazon linux 2023
 sudo systemctl enable --now mariadb                           # To start and enable mariadb service
 sudo dnf install php-mysqlnd -y                               #  To install PHP MySQL driver
 sudo mysql_secure_installation                                # Secure the installation
