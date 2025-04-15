@@ -1,3 +1,5 @@
+# To save a data in .txt file
+
 <?php
 // Show errors for debugging
 ini_set('display_errors', 1);
