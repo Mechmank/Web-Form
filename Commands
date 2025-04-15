@@ -11,7 +11,7 @@ sudo systemctl enable --now httpd                             # To start and ena
 
 sudo mv form.html /var/www/html/                              # Move the .html file to appropriate location
 
-# create submiy.php file here
+# create submit.php file here (submit_txt.php/submit_csv.php)
 
 sudo mv submit.php /var/www/html/                             # Move the .php file to appropriate location
 sudo touch /var/www/html/submissions.txt                      # Creating submissions.txt which will store the submitted details from website
@@ -30,3 +30,43 @@ sudo tail -f /var/log/httpd/error_log                         # Refer log if any
 
 # 2. To save a data in maria DB
 
+sudo yum install php httpd -y                                 # To install httpd and php
+sudo systemctl enable --now httpd                             # To start and enable httpd service
+sudo dnf install mariadb105-server -y                         # To install maria DB
+sudo systemctl enable --now mariadb                           # To start and enable mariadb service
+sudo dnf install php-mysqlnd -y                               #  To install PHP MySQL driver
+sudo mysql_secure_installation                                # Secure the installation
+
+#Just hit Enter for current root password (it's blank)
+#Set a new root password (say yes)
+#Answer yes to all the prompts (remove anonymous, disallow remote root, etc.)
+
+mysql -u root -p                                              # Login to DB
+
+# Paste the following lines one by one n the prompt
+
+CREATE DATABASE webform;
+USE webform;
+
+CREATE TABLE submissions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    message TEXT,
+    submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+EXIT;
+
+# Create form.html
+vi /var/www/html/submit.php                                  # To create a .php file. Add the details in submit_DB.php
+sudo systemctl restart httpd
+
+http://<your-ec2-ip>/form.html                               # Search this in browser and the form will be available
+
+# Check your DB for the saved details
+mysql -u root -p
+USE webform;
+SELECT * FROM submissions;
+
+
+#########################################################################################################################
