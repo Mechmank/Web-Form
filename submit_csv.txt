@@ -1,3 +1,5 @@
+# To save a output in CSV file
+
 <?php
 // Show errors while debugging
 ini_set('display_errors', 1);
