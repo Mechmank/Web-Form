@@ -58,12 +58,13 @@ CREATE TABLE submissions (
 EXIT;
 
 # Create form.html
-vi /var/www/html/submit.php                                  # To create a .php file. Add the details in submit_DB.php
+sudo vi /var/www/html/submit.php                             # To create a .php file. Add the details in submit_DB.php
 sudo systemctl restart httpd
 
 http://<your-ec2-ip>/form.html                               # Search this in browser and the form will be available
 
 # Check your DB for the saved details
+
 mysql -u root -p
 USE webform;
 SELECT * FROM submissions;
@@ -75,10 +76,22 @@ SELECT * FROM submissions;
 
 # Follow the previous steps to save a data in DB and add the following steps along with that to send a mail.
 
-cd /var/www/html
+sudo cd /var/www/html
 sudo curl -sSLo phpmailer.zip https://github.com/PHPMailer/PHPMailer/archive/refs/heads/master.zip
 sudo unzip phpmailer.zip
 sudo mv PHPMailer-master phpmailer
 sudo rm phpmailer.zip
 
-# paste the datails in submit_DB_mail.php to submit.php
+sudo vi /var/www/html/submit.php                                  # To create a .php file. Add the details in submit_DB.php
+
+sudo systemctl restart httpd
+
+ttp://<your-ec2-ip>/form.html                               # Search this in browser and the form will be available
+
+# mail will be sent to given mail ID and Check your DB for the saved details
+
+mysql -u root -p
+USE webform;
+SELECT * FROM submissions;
+
+############################################################################################################################
